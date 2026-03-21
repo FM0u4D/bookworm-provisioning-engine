@@ -1,5 +1,13 @@
 #!/bin/bash
 
+#===============================================================
+# LOAD LIBRARIES
+#===============================================================
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+source "$BASE_DIR/lib/colors.sh"
+source "$BASE_DIR/lib/system.sh"
+
 # ===============================================
 # Checking the least of the least needed commands
 # ===============================================

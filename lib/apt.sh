@@ -6,6 +6,12 @@ export DEBIAN_FRONTEND=noninteractive
 APT_UPDATED=false
 
 #===============================================================
+# LOAD COLORS LIBRARY
+#===============================================================
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$BASE_DIR/lib/core.sh"
+
+#===============================================================
 # Retry wrapper for apt-get
 #===============================================================
 apt_retry() {
