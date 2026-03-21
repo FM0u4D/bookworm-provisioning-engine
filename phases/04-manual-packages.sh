@@ -5,8 +5,8 @@
 #===============================================================
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-source "$BASE_DIR/lib/core.sh"
-source "$BASE_DIR/lib/apt.sh"
+source "$BASE_DIR/../lib/core.sh"
+source "$BASE_DIR/../lib/apt.sh"
 
 # ===============================================
 # PHASE: MANUAL PACKAGES

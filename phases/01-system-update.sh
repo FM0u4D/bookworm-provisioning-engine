@@ -5,8 +5,8 @@
 #===============================================================
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-source "$BASE_DIR/lib/core.sh"
-source "$BASE_DIR/lib/apt.sh"
+source "$BASE_DIR/../lib/core.sh"
+source "$BASE_DIR/../lib/apt.sh"
 
 # ===============================================
 # PHASE: SYSTEM UPDATE
@@ -22,7 +22,7 @@ sleep 1
 apt_retry update || log_fail_icon "apt update failed"
 
 # -----------------------------------------
-# UPGRADE SYSTEM
+# UPGRADE SYSTEM/..
 # -----------------------------------------
 log_info_icon "Upgrading installed packages..."
 sleep 3
