@@ -1,6 +1,6 @@
 # wormbook-provisioning-engine
 
-A modular, deterministic, and idempotent provisioning framework for Debian-based systems, precisely destinated for wormbook (Debian minimal 12).
+A modular, deterministic, and idempotent provisioning framework for Debian-based systems, precisely destinated for bookworm (Debian 12).
 
 This project provides a structured and reproducible approach to system initialization, designed for environments where consistency, reliability, and repeatability are critical. It is particularly suited for SOC labs, Proxmox templates, cloud-init workflows, and DevSecOps pipelines.
 
