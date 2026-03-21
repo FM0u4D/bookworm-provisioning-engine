@@ -1,4 +1,4 @@
-# wormbook-provisioning-engine
+# bookworm-provisioning-engine
 
 A modular, deterministic, and idempotent provisioning framework for Debian-based systems, precisely destinated for bookworm (Debian 12).
 
@@ -8,7 +8,7 @@ This project provides a structured and reproducible approach to system initializ
 
 ## Overview
 
-Wormbook Provisioning Engine is built around a simple principle: provision once, reproduce infinitely.
+Bookworm Provisioning Engine is built around a simple principle: provision once, reproduce infinitely.
 
 The framework separates reusable logic from execution steps, allowing systems to be configured through clearly defined phases. Each phase performs a single responsibility such as system validation, package installation, service configuration, or security baseline setup.
 
@@ -18,25 +18,23 @@ Execution is orchestrated through a central script, ensuring strict ordering, co
 
 ## Key Features
 
-Modular architecture  
+Modular architecture :
 Reusable logic is isolated in the `lib/` directory, while execution steps are defined in `phases/`. This separation ensures maintainability and scalability.
 
-Idempotent execution  
+Idempotent execution : 
 All operations are safe to run multiple times. The engine avoids duplicate actions and unnecessary changes.
 
-State-aware provisioning  
+State-aware provisioning : 
 Each completed phase is recorded under `/var/lib/provision/state`. On re-execution, completed phases are automatically skipped.
 
-Deterministic behavior  
+Deterministic behavior : 
 Strict shell settings (`set -Eeuo pipefail`) ensure predictable execution and immediate failure on error.
 
-Structured logging  
+Structured logging : 
 Clear and consistent logging provides visibility into each phase and operation.
 
-Reusable and extensible  
+Reusable and extensible : 
 Designed to be adapted for different environments without modifying core logic.
-
----
 
 ---
 
@@ -81,12 +79,15 @@ This mechanism allows the engine to resume execution without repeating completed
 ## Usage
 
 Run the provisioning process:
+```bash
 chmod +x install.sh
 sudo ./install.sh
+```
 
 Re-running the script is safe:
+```bash
 sudo ./install.sh
-
+```
 
 Completed phases will be skipped automatically.
 
@@ -96,11 +97,13 @@ Completed phases will be skipped automatically.
 
 Manual packages can be defined in:
 config/manual-packages.txt
+
 Example:
+```
 htop
 nmap
 tcpdump
-
+```
 
 To extend the system, create a new phase in the `phases/` directory and register it in `install.sh`.
 
@@ -122,6 +125,7 @@ This framework is built with a focus on:
 - Simplicity over abstraction
 - Explicit behavior over implicit automation
 - Reusability across environments
+- Clean cosmetic logs (hhhhhhhh)
 
 It is intended as a foundation for building reliable infrastructure, not just a one-time setup script.
 
