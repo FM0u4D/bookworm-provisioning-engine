@@ -58,9 +58,10 @@ for phase in "${PHASES[@]}"; do
     phase_path="$PHASE_DIR/$phase"
 
     log_info "Processing phase: $phase_name"
-    echo -ne "\033[6;1H"
     sleep 3
-    clear
+    # Later: clear everything BELOW header
+    echo -ne "\033[6;1H"   # move to line 6
+    echo -ne "\033[J"      # clear below
 
     if is_phase_done "$phase_name"; then
         log_warn "Skipping $phase_name (already completed)"
