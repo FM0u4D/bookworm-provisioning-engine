@@ -73,6 +73,6 @@ done
 # -----------------------------------------
 # COMPLETION
 # -----------------------------------------
-echo -e "\n\n\t\t"
+echo -e "\n"
 log_success_icon "SYSTEM PROVISIONING COMPLETED"
 echo -e "\n\n"
