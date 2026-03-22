@@ -53,15 +53,16 @@ PHASES=(
 # -----------------------------------------
 # EXECUTION LOOP (STATE-AWARE)
 # -----------------------------------------
+local i=6
 for phase in "${PHASES[@]}"; do
     phase_name="${phase%.sh}"
     phase_path="$PHASE_DIR/$phase"
 
     log_info "Processing phase: $phase_name"
     sleep 3
-    # Later: clear everything BELOW header
-    echo -ne "\033[6;1H"   # move to line 6
-    echo -ne "\033[J"      # clear below
+    #Clear everything BELOW header
+    echo -ne "\033[i;1H"
+    echo -ne "\033[J"
 
     if is_phase_done "$phase_name"; then
         log_warn "Skipping $phase_name (already completed)"
@@ -71,6 +72,7 @@ for phase in "${PHASES[@]}"; do
     run_phase "$phase_path"
     sleep 2
     mark_phase_done "$phase_name"
+    ((i++))
 done
 
 # -----------------------------------------
