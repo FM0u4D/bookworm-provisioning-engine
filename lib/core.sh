@@ -129,6 +129,11 @@ log_fail() {
     exit 1
 }
 
+log_fail_without_exit() {
+    _log "FAIL" "$COLOR_FAIL" "$1"
+    printf "[%bABORT%b] Provisioning stopped.\n" "$CYAN" "$RESET"
+}
+
 #===============================================================
 # Icon logs
 #===============================================================

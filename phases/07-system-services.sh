@@ -23,4 +23,10 @@ log_info "Preparing system services..."
 enable_service "systemd-networkd"
 enable_service "systemd-resolved"
 
+if ! service_exists "systemd-resolved"; then
+    log_info "This service provides DNS resolution. If you rely on dynamic DNS or systemd-networkd integration, install it manually:"
+    log_info "  apt install systemd-resolved"
+fi
+
+
 log_success_icon "System services prepared"

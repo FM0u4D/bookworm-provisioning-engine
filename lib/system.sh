@@ -24,6 +24,8 @@ ensure_user_in_group() {
 # ============================================
 
 service_exists() {
+    local svc="$1"
+
     systemctl list-unit-files --type=service --no-legend 2>/dev/null \
         | awk '{print $1}' \
         | grep -qx "${svc}.service"
@@ -32,16 +34,21 @@ service_exists() {
 enable_service() {
     local svc="$1"
 
+    # Service not installed → skip cleanly
     if ! service_exists "$svc"; then
-        log_fail "Service $svc does not exist"
+        log_warn "Service $svc not found (skipped)"
+        return 0
     fi
 
+    # Already enabled
     if systemctl is-enabled "$svc" >/dev/null 2>&1; then
         log_info "Service $svc already enabled"
-    else
-        systemctl enable "$svc"
-        log_success "Service $svc enabled"
+        return 0
     fi
+
+    # Enable service
+    systemctl enable "$svc"
+    log_success "Service $svc enabled"
 }
 
 start_service() {
