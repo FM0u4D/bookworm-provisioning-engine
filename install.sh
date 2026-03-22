@@ -53,7 +53,7 @@ PHASES=(
 # -----------------------------------------
 # EXECUTION LOOP (STATE-AWARE)
 # -----------------------------------------
-local i=6
+i=6
 for phase in "${PHASES[@]}"; do
     phase_name="${phase%.sh}"
     phase_path="$PHASE_DIR/$phase"
