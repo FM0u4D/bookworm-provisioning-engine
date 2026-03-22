@@ -48,6 +48,7 @@ PHASES=(
     "05-validation.sh"
     "06-user-security.sh"
     "07-system-services.sh"
+    "08-swapfile.sh"
     "99-reboot.sh"
 )
 
