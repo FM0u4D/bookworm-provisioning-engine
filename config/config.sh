@@ -1,1 +1,1 @@
-AUTO_REBOOT=true
+AUTO_REBOOT=false

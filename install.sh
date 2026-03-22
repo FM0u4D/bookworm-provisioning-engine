@@ -58,14 +58,15 @@ for phase in "${PHASES[@]}"; do
     phase_path="$PHASE_DIR/$phase"
 
     log_info "Processing phase: $phase_name"
-
+    sleep 3 
+    clear
     if is_phase_done "$phase_name"; then
         log_warn "Skipping $phase_name (already completed)"
         continue
     fi
 
     run_phase "$phase_path"
-
+    sleep 2
     mark_phase_done "$phase_name"
 done
 
