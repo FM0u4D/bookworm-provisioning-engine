@@ -61,7 +61,7 @@ for phase in "${PHASES[@]}"; do
     log_info "Processing phase: $phase_name"
     sleep 3
     #Clear everything BELOW header
-    echo -ne "\033[i;1H"
+    echo -ne "\033[${i};1H"
     echo -ne "\033[J"
 
     if is_phase_done "$phase_name"; then
