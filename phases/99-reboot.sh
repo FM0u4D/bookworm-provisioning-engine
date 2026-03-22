@@ -35,6 +35,6 @@ else
         sleep 1
         reboot
     else
-        log_warn_icon "Please reboot manually before continuing setup"
+        log_warn_icon "${RED}Please reboot manually before continuing setup"
     fi
 fi
