@@ -36,6 +36,8 @@ init_state_dir
 # -----------------------------------------
 # PHASE ORDER (STRICT)
 # -----------------------------------------
+log_phase "STARTING PROVISIONING" "Executing all phases"
+
 PHASES=(
     "00-base-system.sh"
     "01-system-update.sh"
@@ -56,9 +58,9 @@ for phase in "${PHASES[@]}"; do
     phase_path="$PHASE_DIR/$phase"
 
     log_info "Processing phase: $phase_name"
-    sleep 3 
+    echo -ne "\033[6;1H"
+    sleep 3
     clear
-    log_phase "STARTING PROVISIONING" "Executing all phases"
 
     if is_phase_done "$phase_name"; then
         log_warn "Skipping $phase_name (already completed)"
