@@ -60,7 +60,7 @@ install_pkg() {
 
     for pkg in "${packages[@]}"; do
         if is_package_installed "$pkg"; then
-            log_warn "$pkg already installed — skipping"
+            log_warn "$pkg already installed (skipped)"
         else
             to_install+=("$pkg")
         fi

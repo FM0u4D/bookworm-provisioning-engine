@@ -20,7 +20,6 @@ source "$BASE_DIR/../lib/apt.sh"
 log_phase "CORE TOOLS INSTALLATION" "Base utilities for system operations"
 
 CORE_PKGS=(
-    networkd-sysv
     iproute2
     net-tools
     vim

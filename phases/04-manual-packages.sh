@@ -24,7 +24,7 @@ MANUAL_FILE="$BASE_DIR/config/manual-packages.txt"
 # CHECK FILE EXISTENCE
 # -----------------------------------------
 if [[ ! -f "$MANUAL_FILE" ]]; then
-    log_info "No manual packages file found — skipping"
+    log_info "No manual packages file found (skipped)"
     exit 0
 fi
 
@@ -36,7 +36,7 @@ mapfile -t PACKAGE_LIST < <(
 )
 
 if [[ ${#PACKAGE_LIST[@]} -eq 0 ]]; then
-    log_info "Manual packages file is empty — skipping"
+    log_info "Manual packages file is empty (skipped)"
     exit 0
 fi
 

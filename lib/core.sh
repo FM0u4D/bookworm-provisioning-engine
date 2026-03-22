@@ -23,7 +23,7 @@ _log_icon() {
     local color="$2"
     local message="$3"
 
-    printf "[%b%s%b] %b%s%b\n" "$color" "$icon" "$RESET" "$DIM" "$message" "$RESET"
+    printf "%b%s%b  %b%s%b\n" "$color" "$icon" "$RESET" "$DIM" "$message" "$RESET"
 }
 
 #===============================================================

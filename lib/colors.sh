@@ -34,7 +34,7 @@ GREEN=$(_color "\033[38;5;82m")
 YELLOW=$(_color "\033[38;5;220m")
 ORANGE=$(_color "\033[1;33m")
 BLUE=$(_color "\033[38;5;39m")
-MAGENTA=$(_color "\033[38;5;141m")
+MAGENTA=$(_color "\033[38;5;151m")
 CYAN=$(_color "\033[38;5;51m")
 
 # Semantic aliases (VERY IMPORTANT for maintainability)
@@ -43,4 +43,4 @@ COLOR_FAIL="$RED"
 COLOR_WARN="$YELLOW"
 COLOR_TRY="$CYAN"
 COLOR_INFO="$ORANGE"
-COLOR_PHASE="$BLUE"
+COLOR_PHASE="$YELLOW"
