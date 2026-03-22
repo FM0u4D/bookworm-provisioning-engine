@@ -7,8 +7,9 @@ ICON_FAIL="✖"
 ICON_WARN="⚠"
 ICON_INFO="➜"
 
+
 #===============================================================
-# Internal printer (DO NOT EXPOSE)
+# Internal printer
 #===============================================================
 _log() {
     local level="$1"
@@ -120,7 +121,7 @@ log_phase() {
 #===============================================================
 log_info()    { _log "INFO"  "$COLOR_INFO"  "$1"; }
 log_try()     { _log "RETRY" "$COLOR_TRY"   "$1"; }
-log_success() { _log "OK"    "$COLOR_OK"    "$1"; }
+log_success() { _log " OK "    "$COLOR_OK"    "$1"; }
 log_warn()    { _log "WARN"  "$COLOR_WARN"  "$1"; }
 
 log_fail() {

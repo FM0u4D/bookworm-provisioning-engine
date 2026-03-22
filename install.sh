@@ -53,7 +53,7 @@ PHASES=(
 # -----------------------------------------
 # EXECUTION LOOP (STATE-AWARE)
 # -----------------------------------------
-i=6
+i=8
 for phase in "${PHASES[@]}"; do
     phase_name="${phase%.sh}"
     phase_path="$PHASE_DIR/$phase"
@@ -72,7 +72,7 @@ for phase in "${PHASES[@]}"; do
     run_phase "$phase_path"
     sleep 2
     mark_phase_done "$phase_name"
-    ((i += 2))
+    ((i++))
 done
 
 # -----------------------------------------
