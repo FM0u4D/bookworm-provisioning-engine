@@ -53,11 +53,13 @@ PHASES=(
 # -----------------------------------------
 # EXECUTION LOOP (STATE-AWARE)
 # -----------------------------------------
-i=8
+i=5
 for phase in "${PHASES[@]}"; do
+    ((i++))
     phase_name="${phase%.sh}"
     phase_path="$PHASE_DIR/$phase"
 
+    echo -e ""
     log_info "Processing phase: $phase_name"
     sleep 3
     #Clear everything BELOW header
@@ -70,9 +72,7 @@ for phase in "${PHASES[@]}"; do
     fi
 
     run_phase "$phase_path"
-    sleep 2
     mark_phase_done "$phase_name"
-    ((i++))
 done
 
 # -----------------------------------------
@@ -80,4 +80,4 @@ done
 # -----------------------------------------
 echo -e "\n"
 log_success_icon "SYSTEM PROVISIONING COMPLETED"
-echo -e "\n\n"
+echo -e "\n"
