@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 #===============================================================
 # LOAD LIBRARIES
 #===============================================================
@@ -9,7 +10,7 @@ source "$BASE_DIR/../lib/core.sh"
 source "$BASE_DIR/../lib/apt.sh"
 
 # ===============================================
-# PHASE: SYSTEM UPDATE
+# SYSTEM UPDATE
 # ===============================================
 
 log_phase "SYSTEM UPDATE" "APT update + upgrade"

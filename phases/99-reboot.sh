@@ -11,7 +11,7 @@ source "$BASE_DIR/../lib/apt.sh"
 source "$BASE_DIR/../config/config.sh"
 
 # ===============================================
-# PHASE: REBOOT HANDLER
+# REBOOT HANDLER
 # ===============================================
 
 log_phase "SYSTEM REBOOT" "Finalizing provisioning"

@@ -10,7 +10,7 @@ source "$BASE_DIR/../lib/core.sh"
 source "$BASE_DIR/../lib/system.sh"
 
 # ===============================================
-# PHASE: SYSTEM PREPARATION
+# SYSTEM PREPARATION
 # ===============================================
 
 log_phase "SYSTEM PREPARATION" "Baseline system configuration"

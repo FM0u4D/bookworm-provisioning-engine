@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 #===============================================================
 # LOAD LIBRARIES
 #===============================================================
@@ -9,7 +10,7 @@ source "$BASE_DIR/../lib/core.sh"
 source "$BASE_DIR/../lib/apt.sh"
 
 # ===============================================
-# PHASE: MANUAL PACKAGES
+# MANUAL PACKAGES
 # ===============================================
 
 log_phase "MANUAL PACKAGES" "Custom package installation"

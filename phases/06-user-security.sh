@@ -11,7 +11,7 @@ source "$BASE_DIR/../lib/apt.sh"
 source "$BASE_DIR/../lib/system.sh"
 
 # ===============================================
-# PHASE: USER SECURITY BASELINE
+# USER SECURITY BASELINE
 # ===============================================
 
 log_phase "USER SECURITY" "Sudo installation + privilege assignment"

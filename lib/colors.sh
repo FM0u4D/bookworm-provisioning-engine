@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Prevent reloading
 [ -n "${COLORS_LOADED:-}" ] && return
 COLORS_LOADED=1

@@ -10,7 +10,7 @@ source "$BASE_DIR/../lib/core.sh"
 source "$BASE_DIR/../lib/system.sh"
 
 # ===============================================
-# PHASE: SYSTEM SERVICES
+# SYSTEM SERVICES
 # ===============================================
 
 log_phase "SYSTEM SERVICES" "Enabling core system services"

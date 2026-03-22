@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 source "$(dirname "${BASH_SOURCE[0]}")/colors.sh"
 
 ICON_OK="✔"

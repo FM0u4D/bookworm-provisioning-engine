@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Load dependencies
 source "$(dirname "${BASH_SOURCE[0]}")/colors.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/core.sh"
