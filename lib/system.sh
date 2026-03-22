@@ -25,7 +25,8 @@ ensure_user_in_group() {
 
 service_exists() {
     systemctl list-unit-files --type=service --no-legend 2>/dev/null \
-        | awk '{print $1}' | grep -qx "$1"
+        | awk '{print $1}' \
+        | grep -qx "${svc}.service"
 }
 
 enable_service() {
