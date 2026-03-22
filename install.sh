@@ -33,8 +33,6 @@ export TZ=UTC
 # -----------------------------------------
 init_state_dir
 
-log_phase "STARTING PROVISIONING" "Executing all phases"
-
 # -----------------------------------------
 # PHASE ORDER (STRICT)
 # -----------------------------------------
@@ -60,6 +58,8 @@ for phase in "${PHASES[@]}"; do
     log_info "Processing phase: $phase_name"
     sleep 3 
     clear
+    log_phase "STARTING PROVISIONING" "Executing all phases"
+
     if is_phase_done "$phase_name"; then
         log_warn "Skipping $phase_name (already completed)"
         continue
@@ -73,4 +73,6 @@ done
 # -----------------------------------------
 # COMPLETION
 # -----------------------------------------
+echo -e "\n\n\t\t"
 log_success_icon "SYSTEM PROVISIONING COMPLETED"
+echo -e "\n\n"
