@@ -72,7 +72,7 @@ for phase in "${PHASES[@]}"; do
     run_phase "$phase_path"
     sleep 2
     mark_phase_done "$phase_name"
-    ((i++))
+    ((i += 2))
 done
 
 # -----------------------------------------
