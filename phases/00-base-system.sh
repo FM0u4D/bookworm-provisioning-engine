@@ -3,10 +3,13 @@
 #===============================================================
 # LOAD LIBRARIES
 #===============================================================
-BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-source "$BASE_DIR/../lib/colors.sh"
-source "$BASE_DIR/../lib/system.sh"
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+LIB_DIR="$BASE_DIR/../lib"
+
+source "$LIB_DIR/colors.sh"
+source "$LIB_DIR/system.sh"
+
 
 # ===============================================
 # Checking the least of the least needed commands

@@ -8,14 +8,19 @@ IFS=$'\n\t'
 # -----------------------------------------
 clear
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export BASE_DIR
+
+LIB_DIR="$BASE_DIR/lib/"
+PHASE_DIR="$BASE_DIR/phases/"
+STATE_DIR="/var/lib/provision/state/"
 
 # -----------------------------------------
 # LOAD LIBRARIES
 # -----------------------------------------
-source "$BASE_DIR/lib/colors.sh"
-source "$BASE_DIR/lib/core.sh"
-source "$BASE_DIR/lib/apt.sh"
-source "$BASE_DIR/lib/state.sh"
+source "$LIB_DIR/colors.sh"
+source "$LIB_DIR/core.sh"
+source "$LIB_DIR/apt.sh"
+source "$LIB_DIR/state.sh"
 
 # -----------------------------------------
 # ENVIRONMENT
@@ -50,7 +55,7 @@ PHASES=(
 # -----------------------------------------
 for phase in "${PHASES[@]}"; do
     phase_name="${phase%.sh}"
-    phase_path="$BASE_DIR/phases/$phase"
+    phase_path="$PHASE_DIR/$phase"
 
     log_info "Processing phase: $phase_name"
 
