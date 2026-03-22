@@ -35,11 +35,11 @@ ensure_user_in_group "$USER_NAME" "sudo"
 # -----------------------------------------
 # FINAL MESSAGE
 # -----------------------------------------
-log_phase_1 \
+log_phase \
     "${GREEN}SUDO CONFIGURED SUCCESSFULLY" \
     "${YELLOW}User '${WHITE}${BOLD}${USER_NAME}${RESET}${YELLOW}' added to sudo group" \
-    "${RED}⚠ ${CYAN} A system reboot is required" \
-    "${CYAN}to apply group membership changes"
+    "⚠ ${RED} A system reboot is required" \
+    "to apply group membership changes"
 
 sleep 2
-log_success "Security baseline applied"
+log_success_icon "Security baseline applied"

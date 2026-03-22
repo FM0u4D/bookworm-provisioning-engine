@@ -60,7 +60,7 @@ install_pkg() {
 
     for pkg in "${packages[@]}"; do
         if is_package_installed "$pkg"; then
-            log_warn "$pkg already installed (skipped)"
+            log_success "$pkg already installed (skipped)"
         else
             to_install+=("$pkg")
         fi
@@ -113,7 +113,7 @@ check_package() {
     local pkg="$1"
 
     if is_package_installed "$pkg"; then
-        log_success_icon "${DIM}$pkg${RESET} is properly installed."
+        log_success "${DIM}$pkg${RESET} is properly installed."
     else
         log_fail_icon "${DIM}$pkg${RESET} is NOT correctly installed."
         exit 1

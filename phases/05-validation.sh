@@ -40,7 +40,7 @@ if [[ ${#PACKAGE_LIST[@]} -eq 0 ]]; then
     exit 0
 fi
 
-log_info_icon "Validating installed manual packages..."
+log_info "Validating installed manual packages..."
 
 # -----------------------------------------
 # VALIDATION LOOP (STRICT)

@@ -29,36 +29,69 @@ _log_icon() {
 #===============================================================
 # Phase logging
 #===============================================================
+strip_ansi() {
+    local input="$1"
+    local output=""
+    local i=0
+    local len=${#input}
+
+    while (( i < len )); do
+        if [[ "${input:$i:1}" == $'\e' ]]; then
+            # Skip ANSI sequence
+            while (( i < len )) && [[ "${input:$i:1}" != "m" ]]; do
+                ((i++))
+            done
+        else
+            output+="${input:$i:1}"
+        fi
+        ((i++))
+    done
+
+    printf '%s' "$output"
+}
+
+apply_phase_color() {
+    local msg="$1"
+
+    # Detect ANSI escape sequence
+    if [[ "$msg" == *$'\e['* ]]; then
+        # Already colored → return as-is
+        printf '%s' "$msg"
+    else
+        # No color → apply default phase color
+        printf '%b%s%b' "$COLOR_PHASE" "$msg" "$RESET"
+    fi
+}
+
 log_phase() {
     local messages=("$@")
     local max_len=0
 
-    #===========================================================
-    # Find longest message
-    #===========================================================
+    #==============================================
+    # Find longest visible message (WITHOUT ANSI)
+    #==============================================
     for msg in "${messages[@]}"; do
-        local len=${#msg}
+        local clean_msg
+        clean_msg=$(strip_ansi "$msg")
+        local len=${#clean_msg}
         (( len > max_len )) && max_len=$len
     done
 
-    # Padding (2 spaces on each side)
     local padding=2
     local inner_width=$((max_len + padding * 2))
 
-    # Build horizontal line
     local line
     line=$(printf '═%.0s' $(seq 1 $inner_width))
 
-    #===========================================================
     # Top border
-    #===========================================================
     printf "\n%b╔%s╗%b\n" "$MAGENTA" "$line" "$RESET"
 
-    #===========================================================
-    # Content lines
-    #===========================================================
+    # Content
     for msg in "${messages[@]}"; do
-        local len=${#msg}
+        local clean_msg
+        clean_msg=$(strip_ansi "$msg")
+
+        local len=${#clean_msg}
         local space=$((max_len - len))
 
         printf "%b║%b" "$MAGENTA" "$RESET"
@@ -66,70 +99,19 @@ log_phase() {
         # Left padding
         printf "%*s" $padding ""
 
-        # Message
-        printf "%b%s%b" "${BOLD}${COLOR_PHASE}" "$msg" "$RESET"
+        # Message (colored)
+        local colored_msg
+        colored_msg=$(apply_phase_color "$msg")
 
-        # Right padding + alignment
+        printf "%b%s%b" "$BOLD" "$colored_msg" "$RESET"
+
+        # Right padding
         printf "%*s" $((space + padding)) ""
 
         printf "%b║%b\n" "$MAGENTA" "$RESET"
     done
 
-    #===========================================================
     # Bottom border
-    #===========================================================
-    printf "%b╚%s╝%b\n" "$MAGENTA" "$line" "$RESET"
-}
-
-log_phase_1() {
-    local messages=("$@")
-    local max_len=0
-
-    #===========================================================
-    # Find longest message
-    #===========================================================
-    for msg in "${messages[@]}"; do
-        local len=${#msg}
-        (( len > max_len )) && max_len=$len
-    done
-
-    # Padding (2 spaces on each side)
-    local padding=2
-    local inner_width=$((max_len + padding * 2))
-
-    # Build horizontal line
-    local line
-    line=$(printf '═%.0s' $(seq 1 $inner_width))
-
-    #===========================================================
-    # Top border
-    #===========================================================
-    printf "\n%b╔%s╗%b\n" "$MAGENTA" "$line" "$RESET"
-
-    #===========================================================
-    # Content lines
-    #===========================================================
-    for msg in "${messages[@]}"; do
-        local len=${#msg}
-        local space=$((max_len - len))
-
-        printf "%b║%b" "$MAGENTA" "$RESET"
-
-        # Left padding
-        printf "%*s" $padding ""
-
-        # Message
-        printf "%b%s%b" "$BOLD" "$msg" "$RESET"
-
-        # Right padding + alignment
-        printf "%*s" $((space + padding)) ""
-
-        printf "%b║%b\n" "$MAGENTA" "$RESET"
-    done
-
-    #===========================================================
-    # Bottom border
-    #===========================================================
     printf "%b╚%s╝%b\n" "$MAGENTA" "$line" "$RESET"
 }
 
@@ -170,7 +152,7 @@ run_phase() {
         log_fail "Missing phase: $file"
     fi
 
-    log_phase "Running $(basename "$file")"
+    #log_phase "Running $(basename "$file")"
 
     if ! bash "$file"; then
         log_fail "Phase failed: $(basename "$file")"
