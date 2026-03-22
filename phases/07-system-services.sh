@@ -14,12 +14,14 @@ source "$BASE_DIR/../lib/system.sh"
 # ===============================================
 
 log_phase "SYSTEM SERVICES" "Enabling core system services"
-
-log_info "Preparing system services..."
+sleep 2
 
 # -----------------------------------------
 # ENABLE CORE SERVICES
 # -----------------------------------------
+
+log_info "Preparing system services..."
+
 enable_service "systemd-networkd"
 enable_service "systemd-resolved"
 
@@ -28,5 +30,5 @@ if ! service_exists "systemd-resolved"; then
     echo "${GREEN}       # ${WHITE}${BOLD}apt install systemd-resolved${RESET}"
 fi
 
-
 log_success_icon "System services prepared"
+sleep 3

@@ -14,6 +14,7 @@ source "$BASE_DIR/../lib/system.sh"
 # ===============================================
 
 log_phase "SYSTEM PREPARATION" "Baseline system configuration"
+sleep 2
 
 # -----------------------------------------
 # TIMEZONE CONFIGURATION (IDEMPOTENT)
@@ -34,3 +35,4 @@ ensure_directory "/opt"
 ensure_directory "/var/log/provision"
 
 log_success_icon "System preparation complete"
+sleep 3

@@ -16,6 +16,7 @@ source "$BASE_DIR/../lib/system.sh"
 
 log_phase "USER SECURITY" "Sudo installation + privilege assignment"
 sleep 2
+
 # -----------------------------------------
 # INSTALL SUDO
 # -----------------------------------------
@@ -39,7 +40,7 @@ log_phase \
     "${GREEN}SUDO CONFIGURED SUCCESSFULLY" \
     "${YELLOW}User '${WHITE}${BOLD}${USER_NAME}${RESET}${YELLOW}' added to sudo group" \
     "⚠ ${RED} A system reboot is required" \
-    "to apply group membership changes"
+    "${RED}to apply group membership changes"
 
-sleep 2
 log_success_icon "Security baseline applied"
+sleep 3

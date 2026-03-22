@@ -14,6 +14,7 @@ source "$BASE_DIR/../lib/apt.sh"
 # ===============================================
 
 log_phase "MANUAL PACKAGES" "Custom package installation"
+sleep 2
 
 # -----------------------------------------
 # FILE PATH
@@ -47,24 +48,47 @@ log_info "Validating manual packages..."
 # CHECK PACKAGE EXISTENCE BEFORE INSTALLING
 # -----------------------------------------
 INVALID_PKGS=()
+VALID_PKGS=()
+warn_flag=false
 
 for pkg in "${PACKAGE_LIST[@]}"; do
-    if ! apt-cache show "$pkg" >/dev/null 2>&1; then
+    if apt-cache show "$pkg" 2>/dev/null | grep -q "^Package:"; then
+        VALID_PKGS+=("$pkg")
+    else
         INVALID_PKGS+=("$pkg")
     fi
 done
 
-if [[ ${#INVALID_PKGS[@]} -ne 0 ]]; then
-    log_fail_icon "Invalid packages detected: ${INVALID_PKGS[*]}"
-fi
+# -----------------------------------------
+# DECISION LOGIC
+# -----------------------------------------
+if [[ ${#INVALID_PKGS[@]} -eq 0 ]]; then
+    log_success "All manual packages are valid"
 
-log_success "All manual packages are valid"
+elif [[ ${#VALID_PKGS[@]} -eq 0 ]]; then
+    log_fail "All provided packages are invalid: ${INVALID_PKGS[*]}"
+    warn_flag=true
+
+else
+    log_warn_icon "Invalid packages detected: ${INVALID_PKGS[*]}"
+    log_info "Proceeding with valid packages only: ${VALID_PKGS[*]}"
+    warn_flag=true
+fi
 
 # -----------------------------------------
 # INSTALLATION
 # -----------------------------------------
-log_info "Installing manual packages..."
+if [[ "$warn_flag" == false ]]; then
+    log_info "Installing manual packages..."
+else
+    log_info "Installing valid packages only..."
+fi
 
-install_pkg "${PACKAGE_LIST[@]}"
+if [[ ${#VALID_PKGS[@]} -gt 0 ]]; then
+    install_pkg "${VALID_PKGS[@]}"
+    log_success_icon "Manual packages installed"
+else
+    log_warn_icon "No valid packages to install"
+fi
 
-log_success_icon "Manual packages installed"
+sleep 3

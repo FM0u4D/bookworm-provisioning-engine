@@ -117,5 +117,5 @@ log_success "Memory tuning applied"
 log_info "Final memory status:"
 free -m
 
-sleep 3
+sleep 5
 log_success_icon "Adaptive swap configuration completed"

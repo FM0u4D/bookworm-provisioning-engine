@@ -14,6 +14,7 @@ source "$BASE_DIR/../lib/apt.sh"
 # ===============================================
 
 log_phase "SYSTEM UPDATE" "APT update + upgrade"
+sleep 2
 
 # -----------------------------------------
 # UPDATE PACKAGE INDEX
@@ -26,10 +27,11 @@ apt_retry update || log_fail_icon "apt update failed"
 # UPGRADE SYSTEM/..
 # -----------------------------------------
 log_info_icon "Upgrading installed packages..."
-sleep 3
+sleep 2
 apt_retry upgrade -y \
     -o Dpkg::Options::="--force-confnew" \
     -o Dpkg::Options::="--force-confdef" \
     || log_fail_icon "apt upgrade failed"
 
 log_success_icon "System updated successfully"
+sleep 3

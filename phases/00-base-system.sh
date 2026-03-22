@@ -17,7 +17,7 @@ source "$LIB_DIR/system.sh"
 # ===============================================
 
 log_phase "BASE SYSTEM INITIALIZATION" "Preflight checks + APT sources"
-
+sleep 2
 # -----------------------------------------------
 # PREFLIGHT CHECKS
 # -----------------------------------------------
@@ -44,6 +44,7 @@ preflight_checks() {
 
 log_info_icon "Checking system readiness..."
 preflight_checks
+sleep 2
 log_success_icon "System is ready for provisioning"
 
 # -----------------------------------------------
@@ -86,3 +87,4 @@ else
 
     log_success_icon "APT sources configured"
 fi
+sleep 3

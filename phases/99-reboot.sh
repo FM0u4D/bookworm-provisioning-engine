@@ -15,6 +15,7 @@ source "$BASE_DIR/../config/config.sh"
 # ===============================================
 
 log_phase "SYSTEM REBOOT" "Finalizing provisioning"
+sleep 2
 
 AUTO_REBOOT="${AUTO_REBOOT:-false}"
 

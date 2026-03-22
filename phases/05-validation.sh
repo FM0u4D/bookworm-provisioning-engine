@@ -14,6 +14,7 @@ source "$BASE_DIR/../lib/apt.sh"
 # ===============================================
 
 log_phase "PACKAGE VALIDATION" "Verifying manual packages installation"
+sleep 2
 
 # -----------------------------------------
 # FILE PATH
@@ -51,3 +52,4 @@ for pkg in "${PACKAGE_LIST[@]}"; do
 done
 
 log_success_icon "All manual packages verified successfully"
+sleep 3

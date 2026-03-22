@@ -19,6 +19,7 @@ source "$BASE_DIR/../lib/core.sh"
 source "$BASE_DIR/../lib/apt.sh"
 
 log_phase "CORE TOOLS INSTALLATION" "Base utilities for system operations"
+sleep 2
 
 CORE_PKGS=(
     iproute2
@@ -50,3 +51,4 @@ check_command wget
 check_command reboot
 
 log_success_icon "Core packages installed"
+sleep 3
