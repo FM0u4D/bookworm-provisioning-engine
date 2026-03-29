@@ -48,7 +48,7 @@ PHASES=(
     "05-validation.sh"
     "06-user-security.sh"
     "07-system-services.sh"
-    "08-containerd.sh"
+    "08-docker.sh"
     "09-swapfile.sh"
     "99-reboot.sh"
 )
@@ -56,9 +56,9 @@ PHASES=(
 # -----------------------------------------
 # EXECUTION LOOP (STATE-AWARE)
 # -----------------------------------------
-i=5
+HEADER_HEIGHT=5
 for phase in "${PHASES[@]}"; do
-    ((i++))
+    ((HEADER_HEIGHT++))
     phase_name="${phase%.sh}"
     phase_path="$PHASE_DIR/$phase"
 
@@ -66,8 +66,11 @@ for phase in "${PHASES[@]}"; do
     log_info "Processing phase: $phase_name"
     sleep 3
     #Clear everything BELOW header
-    echo -ne "\033[${i};1H"
-    echo -ne "\033[J"
+    #echo -ne "\033[${i};1H"
+    #echo -ne "\033[J"
+    tput csr $HEADER_HEIGHT $(tput lines)   # scroll region from line 6 to bottom
+    tput cup 0 0                            # move to line0  column 0
+    tput el                                 # clear the line
 
     if is_phase_done "$phase_name"; then
         log_warn "Skipping $phase_name (already completed)"
