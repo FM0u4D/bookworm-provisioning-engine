@@ -69,7 +69,7 @@ for phase in "${PHASES[@]}"; do
     #echo -ne "\033[${i};1H"
     #echo -ne "\033[J"
     tput csr $HEADER_HEIGHT $(tput lines)   # scroll region from line 6 to bottom
-    tput cup 0 0                            # move to line0  column 0
+    tput cup $HEADER_HEIGHT 0               # move to line0  column 0
     tput el                                 # clear the line
 
     if is_phase_done "$phase_name"; then
