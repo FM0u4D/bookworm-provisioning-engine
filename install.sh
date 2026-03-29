@@ -62,9 +62,6 @@ for phase in "${PHASES[@]}"; do
     phase_name="${phase%.sh}"
     phase_path="$PHASE_DIR/$phase"
 
-    echo -e ""
-    log_info "Processing phase: $phase_name"
-    sleep 3
     #Clear everything BELOW header
     #echo -ne "\033[${i};1H"
     #echo -ne "\033[J"
@@ -76,6 +73,10 @@ for phase in "${PHASES[@]}"; do
         log_warn "Skipping $phase_name (already completed)"
         continue
     fi
+
+    echo -e ""
+    log_info "Processing phase: $phase_name"
+    sleep 3
 
     run_phase "$phase_path"
     mark_phase_done "$phase_name"
