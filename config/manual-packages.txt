@@ -32,10 +32,6 @@ discover
 dmidecode
 dmsetup
 doc-debian
-docker-buildx-plugin
-docker-ce
-docker-ce-cli
-docker-compose-plugin
 dpkg
 e2fsprogs
 eject
