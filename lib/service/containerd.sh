@@ -69,3 +69,12 @@ EOF
     # Update repos
     run_safe apt-get update
 }
+
+check_docker_compose() {
+    if docker compose version >/dev/null 2>&1; then
+        log_success_icon "docker compose plugin is working."
+    else
+        log_fail_icon "docker compose plugin is NOT available."
+        exit 1
+    fi
+}
