@@ -62,7 +62,7 @@ for phase in "${PHASES[@]}"; do
     phase_path="$PHASE_DIR/$phase"
 
     echo -e ""
-    log_info "Processing phase: $phase_name"
+    log_wait_icon "Processing phase: $phase_name"
     sleep 3
 
     #Clear everything BELOW header
