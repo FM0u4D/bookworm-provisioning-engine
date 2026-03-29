@@ -27,6 +27,7 @@ MANUAL_FILE="$BASE_DIR/config/manual-packages.txt"
 # -----------------------------------------
 if [[ ! -f "$MANUAL_FILE" ]]; then
     log_info "No manual packages file found (skipped)"
+    sleep 3
     exit 0
 fi
 
