@@ -64,10 +64,10 @@ start_service() {
 }
 
 is_service_active() {
-    if [[ ! systemctl is-active --quiet "$1" ]]; then
-        log_fail "$1 service is not running"
-    else
+    if systemctl is-active --quiet "$1"; then
         log_success "$1 service is running perfectly"
+    else
+        log_fail "$1 service is not running"
     fi
 }
 
