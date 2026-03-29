@@ -4,11 +4,13 @@
 #===============================================================
 # LOAD IMPORTANT LIBRARIES
 #===============================================================
-BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-export BASE_DIR
-source "$BASE_DIR/../apt.sh"
-source "$BASE_DIR/../core.sh"
-source "$BASE_DIR/../runtime.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+
+# Load libraries relative to repo root
+source "$REPO_ROOT/lib/core.sh"
+source "$REPO_ROOT/lib/apt.sh"
+source "$REPO_ROOT/lib/runtime.sh"
 
 
 ensure_containerd_service() {
