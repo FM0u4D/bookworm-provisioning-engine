@@ -5,9 +5,9 @@
 # LOAD IMPORTANT LIBRARIES
 #===============================================================
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export BASE_DIR
 source "$BASE_DIR/../core.sh"
 source "$BASE_DIR/../runtime.sh"
-
 
 ensure_containerd_service() {
     log_info "Ensuring containerd service is active..."

@@ -1,6 +1,11 @@
 #!/bin/bash
 
-source "./core.sh"
+#===============================================================
+# LOAD IMPORTANT LIBRARIES
+#===============================================================
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export BASE_DIR
+source "$BASE_DIR/core.sh"
 
 check_runtime() {
     local name="$1"
