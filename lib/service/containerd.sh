@@ -78,3 +78,12 @@ check_docker_compose() {
         exit 1
     fi
 }
+
+check_docker_buildx() {
+    if docker buildx version >/dev/null 2>&1; then
+        log_success_icon "docker buildx plugin is available"
+    else
+        log_fail_icon "docker buildx plugin is NOT available"
+        exit 1
+    fi
+}
