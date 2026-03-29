@@ -15,7 +15,6 @@ bzip2
 ca-certificates
 cloud-guest-utils
 console-setup
-containerd.io
 coreutils
 cpio
 cron
