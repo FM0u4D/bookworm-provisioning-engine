@@ -48,7 +48,7 @@ log_info "Verifying Docker installation..."
 check_command docker
 #check_command docker-compose
 check_docker_compose
-check_command docker-buildx
+check_docker_buildx
 
 check_runtime "docker" "docker info"
 
