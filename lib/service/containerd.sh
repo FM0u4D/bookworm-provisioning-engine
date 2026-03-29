@@ -11,6 +11,7 @@ source "$BASE_DIR/../runtime.sh"
 
 ensure_containerd_service() {
     log_info "Ensuring containerd service is active..."
+    sleep 2
 
     enable_service containerd
     start_service containerd
@@ -18,6 +19,7 @@ ensure_containerd_service() {
 
 verify_containerd() {
     log_info "Verifying containerd installation..."
+    sleep 2
 
     # Package check
     check_package "containerd.io"
@@ -29,10 +31,7 @@ verify_containerd() {
     is_service_active "containerd"
 
     # Runtime check (Very important)
-    if ! ctr version &> /dev/null; then
-        log_fail "containerd runtime is not responding"
-        return 1
-    fi
+    check_runtime "containerd" "ctr version" || return 1
 
     log_success_icon "containerd is fully operational"
 }
