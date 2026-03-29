@@ -45,7 +45,7 @@ fi
 log_info "Validating installed manual packages..."
 
 # -----------------------------------------
-# VALIDATION LOOP (STRICT)
+# VALIDATION LOOP
 # -----------------------------------------
 for pkg in "${PACKAGE_LIST[@]}"; do
     check_package "$pkg"
