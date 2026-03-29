@@ -75,7 +75,7 @@ for phase in "${PHASES[@]}"; do
 
     ((HEADER_HEIGHT++))
     if is_phase_done "$phase_name"; then
-        log_warn "Skipping $phase_name (already completed)"
+        log_info "Skipping $phase_name (already completed)"
         continue
     fi
 
