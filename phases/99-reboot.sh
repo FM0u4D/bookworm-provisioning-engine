@@ -23,19 +23,19 @@ AUTO_REBOOT="${AUTO_REBOOT:-false}"
 # REBOOT LOGIC
 # -----------------------------------------
 if [[ "$AUTO_REBOOT" == true ]]; then
-    log_warn "The system will reboot now in 3s"
-    sleep 2
+    log_warn "System will reboot automatically in 3 seconds..."
+    sleep 3
     reboot
 else
-    log_info "Reboot is recommended to apply all changes"
+    log_info "A system reboot is recommended to apply all changes."
 
-    read -rp "Do you want to reboot now? (y/n): " choice
+    read -rp "Do you want to reboot now? (Y/n): " choice
 
     if [[ "$choice" =~ ^[Yy]$ ]]; then
-        log_warn "Rebooting system..."
+        log_warn "Rebooting system now..."
         sleep 2
         reboot
     else
-        log_warn_icon "Please reboot manually before continuing setup"
+        log_warn_icon "Please remember to reboot manually later to apply changes."
     fi
 fi
