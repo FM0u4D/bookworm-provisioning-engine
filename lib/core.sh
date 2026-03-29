@@ -7,6 +7,7 @@ ICON_OK="✔"
 ICON_FAIL="✖"
 ICON_WARN="⚠"
 ICON_INFO="➜"
+ICON_WAIT="⏳"
 
 
 #===============================================================
@@ -142,6 +143,7 @@ log_fail_without_exit() {
 log_info_icon()    { _log_icon "$ICON_INFO" "$COLOR_INFO" "$1"; }
 log_success_icon() { _log_icon "$ICON_OK"   "$COLOR_OK"   "$1"; }
 log_warn_icon()    { _log_icon "$ICON_WARN" "$COLOR_WARN" "$1"; }
+log_wait_icon()    { _log_icon "$ICON_WAIT" "$COLOR_WAIT" "$1"; }
 
 log_fail_icon() {
     _log_icon "$ICON_FAIL" "$COLOR_FAIL" "$1"
