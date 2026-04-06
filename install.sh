@@ -56,24 +56,24 @@ PHASES=(
 # -----------------------------------------
 # EXECUTION LOOP (STATE-AWARE)
 # -----------------------------------------
-HEADER_HEIGHT=6
+##HEADER_HEIGHT=6
 for phase in "${PHASES[@]}"; do
     phase_name="${phase%.sh}"
     phase_path="$PHASE_DIR/$phase"
 
     echo -e ""
     log_wait_icon "Processing phase: $phase_name"
-    sleep 3
+    ##sleep 3
 
     #Clear everything BELOW header
     #echo -ne "\033[${i};1H"
     #echo -ne "\033[J"
-    tput csr $HEADER_HEIGHT $(tput lines)   # scroll region from line 6 to bottom
-    tput cup $HEADER_HEIGHT 0               # move to line0  column 0
-    echo -ne "\033[J"                       # clear the line
+    ##tput csr $HEADER_HEIGHT $(tput lines)   # scroll region from line 6 to bottom
+    ##tput cup $HEADER_HEIGHT 0               # move to line0  column 0
+    ##echo -ne "\033[J"                       # clear the line
     #tput el                                # clear the line
 
-    ((HEADER_HEIGHT++))
+    ##((HEADER_HEIGHT++))
     if is_phase_done "$phase_name"; then
         log_info "Skipping $phase_name (already completed)"
         continue
